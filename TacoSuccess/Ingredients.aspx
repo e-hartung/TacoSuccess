@@ -18,7 +18,14 @@
         <%-- change "checkout" button to say "cart" instead? --%>
         <asp:Button ID="btnCheckout" runat="server" OnClick="btnCheckout_Click" Text="Checkout" />
         <br />
-    
+        <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
+            <ItemTemplate>
+                <asp:TextBox ID="txtBxIngredientQuantity" runat="server" MaxLength="2" Width="25px"></asp:TextBox>
+                <asp:Label ID="lblName" runat="server" Text='<%# Eval("IngredientName") %>'></asp:Label>
+                <%-- should probably add range validator --%>
+            </ItemTemplate>
+        </asp:DataList>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT IngredientName from Ingredient"></asp:SqlDataSource>
     </div>
     </form>
 </body>
