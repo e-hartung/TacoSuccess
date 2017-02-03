@@ -11,10 +11,16 @@ namespace TacoSuccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // shows cart button if cart contains items
             if (Session["order"] != null)
             {
-                lnkBtnCart.Visible = true;
+                btnCart.Visible = true;
             }
+        }
+
+        protected void btnCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cart.aspx");
         }
     }
 }

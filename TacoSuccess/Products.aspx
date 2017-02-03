@@ -14,7 +14,7 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:LinkButton ID="lnkBtnCart" runat="server" Visible="False">Cart</asp:LinkButton>
+        <asp:Button ID="btnCart" runat="server" OnClick="btnCart_Click" Text="Cart" Visible="False" />
     
     </div>
     </form>

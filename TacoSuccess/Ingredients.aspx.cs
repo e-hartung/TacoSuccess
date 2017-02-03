@@ -14,12 +14,12 @@ namespace TacoSuccess
 
         }
 
-        protected void lnkBtnBack_Click(object sender, EventArgs e)
+        protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Products.aspx");
         }
 
-        protected void lnkBtnCheckout_Click(object sender, EventArgs e)
+        protected void btnCheckout_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Cart.aspx");
         }

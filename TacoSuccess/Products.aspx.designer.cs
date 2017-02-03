@@ -22,12 +22,12 @@ namespace TacoSuccess {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lnkBtnCart control.
+        /// btnCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnCart;
+        protected global::System.Web.UI.WebControls.Button btnCart;
     }
 }

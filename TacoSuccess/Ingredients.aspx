@@ -14,8 +14,9 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:LinkButton ID="lnkBtnBack" runat="server" OnClick="lnkBtnBack_Click">Back</asp:LinkButton>
-        <asp:LinkButton ID="lnkBtnCheckout" runat="server" OnClick="lnkBtnCheckout_Click">Checkout</asp:LinkButton>
+        <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back" />
+        <%-- change "checkout" button to say "cart" instead? --%>
+        <asp:Button ID="btnCheckout" runat="server" OnClick="btnCheckout_Click" Text="Checkout" />
         <br />
     
     </div>

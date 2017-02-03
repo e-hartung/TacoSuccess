@@ -22,21 +22,21 @@ namespace TacoSuccess {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lnkBtnBack control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnBack;
+        protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
-        /// lnkBtnCheckout control.
+        /// btnCheckout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnCheckout;
+        protected global::System.Web.UI.WebControls.Button btnCheckout;
     }
 }
