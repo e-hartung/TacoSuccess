@@ -13,5 +13,17 @@ namespace TacoSuccess
         {
 
         }
+
+        protected void btnStartOver_Click(object sender, EventArgs e)
+        {
+            //Some code for clearing the session here
+            Response.Redirect("~/Products.aspx");
+        }
+
+        protected void btnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            /*Message appears saying order was placed. I may use a timer.
+             Sends order to employees. Goes back to products screen.*/ 
+        }
     }
 }
