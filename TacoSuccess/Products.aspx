@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:LinkButton ID="lnkBtnCart" runat="server" Visible="False">Cart</asp:LinkButton>
+    
     </div>
     </form>
 </body>

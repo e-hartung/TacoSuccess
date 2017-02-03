@@ -10,6 +10,10 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:LinkButton ID="lnkBtnBack" runat="server" OnClick="lnkBtnBack_Click">Back</asp:LinkButton>
+        <asp:LinkButton ID="lnkBtnCheckout" runat="server" OnClick="lnkBtnCheckout_Click">Checkout</asp:LinkButton>
+        <br />
+    
     </div>
     </form>
 </body>

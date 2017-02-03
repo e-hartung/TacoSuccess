@@ -11,7 +11,10 @@ namespace TacoSuccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["order"] != null)
+            {
+                lnkBtnCart.Visible = true;
+            }
         }
     }
 }
