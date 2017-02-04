@@ -14,6 +14,15 @@
     <form id="form1" runat="server">
     
     <div>
+        <asp:DataList ID="DataList1" runat="server">
+            <ItemTemplate>
+                <asp:Image ID="imgProduct" runat="server" />
+                <asp:Label ID="lblProduct" runat="server"></asp:Label>
+                <asp:BulletedList ID="bltLstExtras" runat="server"></asp:BulletedList>
+                <asp:Button ID="btnEdit" runat="server" Text="Edit" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+            </ItemTemplate>
+        </asp:DataList>
         <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
         <asp:Button ID="btnStartOver" runat="server" Text="Start Over" OnClick="btnStartOver_Click" />
     </div>
