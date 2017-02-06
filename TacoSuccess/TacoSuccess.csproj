@@ -126,7 +126,7 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CartItemList.cs" />
     <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Entree.cs" />
     <Compile Include="Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
