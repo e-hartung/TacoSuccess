@@ -21,6 +21,8 @@ namespace TacoSuccess
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
+            //Start session here
+
             Response.Redirect("~/Cart.aspx");
         }
     }

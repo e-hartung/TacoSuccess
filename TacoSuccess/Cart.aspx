@@ -19,12 +19,16 @@
                 <asp:Image ID="imgProduct" runat="server" />
                 <asp:Label ID="lblProduct" runat="server"></asp:Label>
                 <asp:BulletedList ID="bltLstExtras" runat="server"></asp:BulletedList>
-                <asp:Button ID="btnEdit" runat="server" Text="Edit" />
-                <asp:Button ID="btnDelete" runat="server" Text="Delete" />
+                <!--<asp:Button ID="btnEdit" runat="server" Text="Edit" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" />-->
+
             </ItemTemplate>
         </asp:DataList>
-        <asp:Button ID="btnPlaceOrder" runat="server" Text="Place Order" OnClick="btnPlaceOrder_Click" />
-        <asp:Button ID="btnStartOver" runat="server" Text="Start Over" OnClick="btnStartOver_Click" />
+        <asp:Button ID="btnRemoveItem" runat="server" Text="Remove Item" OnClick="btnRemoveItem_Click" />
+        <asp:Button ID="btnClearOrder" runat="server" Text="Clear Order" OnClick="btnClearOrder_Click" />
+        <asp:Button ID="btnContinueOrdering" runat="server" Text="Continue Ordering" OnClick="btnContinueOrdering_Click" />
+        <asp:Button ID="btnCheckout" runat="server" Text="Checkout" OnClick="btnCheckout_Click" />      
+
     </div>
     </form>
 </body>

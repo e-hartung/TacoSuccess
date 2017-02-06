@@ -31,21 +31,39 @@ namespace TacoSuccess {
         protected global::System.Web.UI.WebControls.DataList DataList1;
         
         /// <summary>
-        /// btnPlaceOrder control.
+        /// btnRemoveItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPlaceOrder;
+        protected global::System.Web.UI.WebControls.Button btnRemoveItem;
         
         /// <summary>
-        /// btnStartOver control.
+        /// btnClearOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStartOver;
+        protected global::System.Web.UI.WebControls.Button btnClearOrder;
+        
+        /// <summary>
+        /// btnContinueOrdering control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContinueOrdering;
+        
+        /// <summary>
+        /// btnCheckout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCheckout;
     }
 }
