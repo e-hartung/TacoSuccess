@@ -21,11 +21,11 @@
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
                 <asp:TextBox ID="txtBxIngredientQuantity" runat="server" MaxLength="2" Width="25px"></asp:TextBox>
-                <asp:Label ID="lblName" runat="server" Text='<%# Eval("IngredientName") %>'></asp:Label>
+                <asp:Label ID="lblName" runat="server" Text='<%# Eval("ingredientsName") %>'></asp:Label>
                 <%-- should probably add range validator --%>
             </ItemTemplate>
         </asp:DataList>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT IngredientName from Ingredient"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT ingredientsName from ingredients"></asp:SqlDataSource>
     </div>
     </form>
 </body>
