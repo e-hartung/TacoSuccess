@@ -20,6 +20,9 @@ namespace TacoSuccess
             Response.Redirect("~/Products.aspx");
         }
 
+        /* 
+         * temporarily commenting this out so code will compile and changes can be pushed
+         * 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
             Entree entree;
@@ -29,11 +32,11 @@ namespace TacoSuccess
             for (int i = 0; i < count; i++)
             {
                 int quantity = Convert.ToInt32(DataList1.Items[i].FindControl("txtBxIngredientQuantity") as TextBox);
-                cartItem.AddSelectedIngredient(/*parameter of type Ingredient*/, quantity);
+                cartItem.AddSelectedIngredient(/*parameter of type Ingredient, quantity);
             }
             Session["cart"] = cartItem;
        
             Response.Redirect("~/Cart.aspx");
-        }
+        } */
     }
 }
