@@ -29,7 +29,12 @@ namespace TacoSuccess
             int count = DataList1.Items.Count;
             for (int i = 0; i < count; i++)
             {
-                int quantity = Convert.ToInt32(DataList1.Items[i].FindControl("txtBxIngredientQuantity") as TextBox);
+                TextBox txtBx = DataList1.Items[i].FindControl("txtBxIngredientQuantity") as TextBox;
+                if (txtBx.Text == "" || txtBx.Text == "0")
+                    continue; 
+                int quantity = Convert.ToInt32(txtBx.Text);
+                // add ingredient to list if not part of BOM.
+                
                 //cartItem.AddSelectedIngredient(/*parameter of type Ingredient*/, quantity);
             }
            // Session["cart"] = cartItem;
