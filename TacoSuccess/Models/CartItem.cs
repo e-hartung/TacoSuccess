@@ -9,7 +9,7 @@ namespace TacoSuccess.Models
     
     public class CartItem
     {
-        internal List<SelectedIngredients> selectedIngredients;
+        public List<SelectedIngredient> selectedIngredients {get;set;}
          
         public Entree Entree { get; set; }
 
@@ -18,12 +18,20 @@ namespace TacoSuccess.Models
         public CartItem(Entree entree)
         {
             this.Entree = entree;
-            selectedIngredients = new List<SelectedIngredients>();
+            selectedIngredients = new List<SelectedIngredient>();
+
         }
-        
+
+        /*public CartItem(object cartItem)
+        {
+            this.Entree = cartItem.Entree;
+            selectedIngredients = new List<SelectedIngredient>();
+            this.selectedIngredients = cartItem.selectedIngredients;
+        }*/
+
         public void AddSelectedIngredient(Ingredient ingredient, int quantity)
         {
-            selectedIngredients.Add(new SelectedIngredients(ingredient, quantity));
+            selectedIngredients.Add(new SelectedIngredient(ingredient, quantity));
         }
     }
 

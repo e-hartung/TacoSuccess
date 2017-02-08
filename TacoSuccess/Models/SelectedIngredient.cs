@@ -5,12 +5,12 @@ using System.Web;
 
 namespace TacoSuccess.Models
 {
-    public class SelectedIngredients
+    public class SelectedIngredient
     {
         public Ingredient Ingredient { get; set; }
         public int Quantity { get; set; }
-        public SelectedIngredients() { }
-        public SelectedIngredients(Ingredient ingredient, int quantity)
+        public SelectedIngredient() { }
+        public SelectedIngredient(Ingredient ingredient, int quantity)
         {
             this.Ingredient = ingredient;
             this.Quantity = quantity;

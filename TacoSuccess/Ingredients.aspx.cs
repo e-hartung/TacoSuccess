@@ -20,21 +20,19 @@ namespace TacoSuccess
             Response.Redirect("~/Products.aspx");
         }
 
-        /* 
-         * temporarily commenting this out so code will compile and changes can be pushed
-         * 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
-            Entree entree;
-            // need to initialize entree
-            CartItem cartItem = new CartItem(entree);
+            //I'm going to put a variable here to get the entree
+            // Entree entree = ???
+            //Then  I'll make a new cartItem object
+            //CartItem cartItem = new CartItem(entree);
             int count = DataList1.Items.Count;
             for (int i = 0; i < count; i++)
             {
                 int quantity = Convert.ToInt32(DataList1.Items[i].FindControl("txtBxIngredientQuantity") as TextBox);
-                cartItem.AddSelectedIngredient(/*parameter of type Ingredient, quantity);
+                //cartItem.AddSelectedIngredient(/*parameter of type Ingredient*/, quantity);
             }
-            Session["cart"] = cartItem;
+           // Session["cart"] = cartItem;
        
             Response.Redirect("~/Cart.aspx");
         } */
