@@ -28,8 +28,8 @@ namespace TacoSuccess
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            // add payment info to db and redirect to confirmation page
-            // create order detail page for employees
+            // add order to orders table in db
+            Response.Redirect("~/Confirmation.aspx");
         }
     }
 }
