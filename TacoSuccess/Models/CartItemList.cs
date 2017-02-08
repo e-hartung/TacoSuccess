@@ -22,7 +22,7 @@ namespace TacoSuccess.Models
             decimal total = 0;
             foreach (CartItem item in cartItems)
             {
-                foreach (SelectedIngredients i in item.selectedIngredients)
+                foreach (SelectedIngredient i in item.selectedIngredients)
                 {
                     total += (i.Ingredient.GetMarkupPrice() * i.Quantity);
                 }
