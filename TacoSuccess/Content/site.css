@@ -1,1 +1,9 @@
-﻿
+﻿/* make number input arrows always visible
+     - this only works in chrome and firefox currently
+     - arrows only appear on hover in opera T_T
+     - arrows don't appear at all in edge or ie11
+*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
