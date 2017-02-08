@@ -9,7 +9,6 @@ namespace TacoSuccess.Models
     
     public class CartItem
     {
-
         public List<SelectedIngredient> selectedIngredients {get;set;}
          
         public Entree Entree { get; set; }
