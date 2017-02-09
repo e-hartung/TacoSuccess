@@ -20,7 +20,7 @@
         <br />
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
-                <asp:TextBox ID="txtBxIngredientQuantity" runat="server" MaxLength="2" Width="25px" TextMode="Number"></asp:TextBox>
+                <asp:TextBox ID="txtBxIngredientQuantity" runat="server" MaxLength="2" Width="40px" TextMode="Number"></asp:TextBox>
                 <asp:Label ID="lblName" runat="server" Text='<%# Eval("ingredientsName") %>'></asp:Label>
                 <%-- should probably add range validator --%>
             </ItemTemplate>
