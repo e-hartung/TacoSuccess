@@ -14,12 +14,16 @@
     <form id="form1" runat="server">
     <div>
         <asp:Label ID="lblCardholder" runat="server" Text="Cardholder Name"></asp:Label><asp:TextBox ID="txtBxCardholder" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="requiredValidatorCardholderName" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCardholder" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="lblCardNumber" runat="server" Text="Card Number"></asp:Label><asp:TextBox ID="txtBxCardNumber" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="requiredValidatorCardNumber" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCardNumber" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="lblExpirationDate" runat="server" Text="Exp Date"></asp:Label><asp:DropDownList ID="ddlMonth" runat="server"></asp:DropDownList><asp:DropDownList ID="ddlYear" runat="server"></asp:DropDownList>
+        <asp:Label ID="lblExpiredMessage" runat="server" CssClass="text-danger"></asp:Label>
         <br />
         <asp:Label ID="lblCVV2" runat="server" Text="CVV2"></asp:Label><asp:TextBox ID="txtBxCVV2" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="requiredValidatorCVV2" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCVV2" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
         <br />
         <asp:Button ID="btnSubmit" runat="server" Text="Submit Order" OnClick="btnSubmit_Click" /><asp:Button ID="btnCart" runat="server" Text="Back to Cart" OnClick="btnCart_Click" />
     </div>

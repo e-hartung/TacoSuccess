@@ -40,6 +40,15 @@ namespace TacoSuccess {
         protected global::System.Web.UI.WebControls.TextBox txtBxCardholder;
         
         /// <summary>
+        /// requiredValidatorCardholderName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredValidatorCardholderName;
+        
+        /// <summary>
         /// lblCardNumber control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace TacoSuccess {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBxCardNumber;
+        
+        /// <summary>
+        /// requiredValidatorCardNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredValidatorCardNumber;
         
         /// <summary>
         /// lblExpirationDate control.
@@ -85,6 +103,15 @@ namespace TacoSuccess {
         protected global::System.Web.UI.WebControls.DropDownList ddlYear;
         
         /// <summary>
+        /// lblExpiredMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExpiredMessage;
+        
+        /// <summary>
         /// lblCVV2 control.
         /// </summary>
         /// <remarks>
@@ -101,6 +128,15 @@ namespace TacoSuccess {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBxCVV2;
+        
+        /// <summary>
+        /// requiredValidatorCVV2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredValidatorCVV2;
         
         /// <summary>
         /// btnSubmit control.
