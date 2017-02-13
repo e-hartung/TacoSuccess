@@ -12,7 +12,7 @@ namespace TacoSuccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
