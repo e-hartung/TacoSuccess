@@ -20,10 +20,10 @@
         <br />
         <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
-                <asp:TextBox ID="txtBxIngredientQuantity" runat="server" MaxLength="2" Width="25px" TextMode="Number"></asp:TextBox>
+                <asp:TextBox ID="txtBxIngredientQuantity" runat="server" MaxLength="2" Width="40px" TextMode="Number"></asp:TextBox>
                 <asp:Image ID="imgIngredient" runat="server" /><%-- img source will come from ingredient table --%>
                 <asp:Label ID="lblName" runat="server" Text='<%# Eval("ingredientsName") %>'></asp:Label>
-                <asp:RangeValidator ID="rangeValidatorIngredientQuantity" runat="server" ErrorMessage="Quantity must be between 0 and [max]" CssClass="text-danger" Display="Dynamic" MaximumValue="30" MinimumValue="0" Type="Integer"></asp:RangeValidator>
+                <asp:RangeValidator ID="rangeValidatorIngredientQuantity" runat="server" ErrorMessage="Quantity must be between 0 and [max]" CssClass="text-danger" Display="Dynamic" MaximumValue="30" MinimumValue="0" Type="Integer" ControlToValidate="txtBxIngredientQuantity"></asp:RangeValidator>
             </ItemTemplate>
         </asp:DataList>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT ingredientsName from ingredients"></asp:SqlDataSource>
