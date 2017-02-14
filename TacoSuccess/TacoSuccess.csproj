@@ -78,6 +78,61 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\1-CARNE-ASADA-WET-BURRITO-PLATO.png" />
+    <Content Include="Images\1-Chicken-Bacon-Avocado-Salad.png" />
+    <Content Include="Images\1-chicken-verde-wet-burrito-platos.png" />
+    <Content Include="Images\1-Mexican-Chopped-Salad.png" />
+    <Content Include="Images\1-Signature-Taco-Salad1.png" />
+    <Content Include="Images\1-Taco-%28Crunchy%29.png" />
+    <Content Include="Images\2-2-BEER-BATTERED-FISH-TACOS-PLATO.png" />
+    <Content Include="Images\2-2-STREET-TACOS-PLATO.png" />
+    <Content Include="Images\Avocado.jpg" />
+    <Content Include="Images\Bacon Pieces.jpg" />
+    <Content Include="Images\Bacon Strips.jpg" />
+    <Content Include="Images\Beans.jpg" />
+    <Content Include="Images\beerbatteredfishtaco.png" />
+    <Content Include="Images\Black Beans.jpg" />
+    <Content Include="Images\Cabbage.jpg" />
+    <Content Include="Images\caramelcheesecakebites.png" />
+    <Content Include="Images\Carne Asada.jpg" />
+    <Content Include="Images\Cheddar Cheese.jpg" />
+    <Content Include="Images\chocolatechipcookies.png" />
+    <Content Include="Images\Cilantro Pepita Ranch Dressing.png" />
+    <Content Include="Images\Cilantro.jpg" />
+    <Content Include="Images\cinnamonchurros.png" />
+    <Content Include="Images\comboburrito.png" />
+    <Content Include="Images\Corn Tortillas.jpg" />
+    <Content Include="Images\Creamy Ranch.jpg" />
+    <Content Include="Images\Crinkle Cut French Fries.jpg" />
+    <Content Include="Images\EpicBRCABurrito.png" />
+    <Content Include="Images\EpicCarneAsadaBurrito.png" />
+    <Content Include="Images\EpicGrilledChickenAvocadoBurrito.png" />
+    <Content Include="Images\EpicSteak&amp;PotatoBurrito.png" />
+    <Content Include="Images\fountaindrinks.png" />
+    <Content Include="Images\Fresca Lime Rice.png" />
+    <Content Include="Images\Freshly Fried Tortilla Chips.jpg" />
+    <Content Include="Images\Green Sauce.jpg" />
+    <Content Include="Images\Grilled Marinated Chicken.jpg" />
+    <Content Include="Images\kidsquesadilla.png" />
+    <Content Include="Images\kidsregulartaco.png" />
+    <Content Include="Images\Lettuce.jpg" />
+    <Content Include="Images\Lime Seasoning.jpg" />
+    <Content Include="Images\Onions.jpg" />
+    <Content Include="Images\Red Sauce.jpg" />
+    <Content Include="Images\Roasted Chile Salsa.png" />
+    <Content Include="Images\Salsa Casera.jpg" />
+    <Content Include="Images\Salsa Seasoning.jpg" />
+    <Content Include="Images\Salsa.jpg" />
+    <Content Include="Images\Seasoned Beef.jpg" />
+    <Content Include="Images\Sour Cream.jpg" />
+    <Content Include="Images\Spicy Jack Cheese.png" />
+    <Content Include="Images\StreetTaco.png" />
+    <Content Include="Images\Taco Shells.jpg" />
+    <Content Include="Images\Taco-%28Soft%29.png" />
+    <Content Include="Images\Tomatoes.jpg" />
+    <Content Include="Images\Tortilla.jpg" />
+    <Content Include="Images\valuebeancheeseburrito.png" />
+    <Content Include="OrderDetails.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -144,6 +199,13 @@
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Entree.cs" />
     <Compile Include="Models\SelectedIngredient.cs" />
+    <Compile Include="OrderDetails.aspx.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderDetails.aspx.designer.cs">
+      <DependentUpon>OrderDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -155,7 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
