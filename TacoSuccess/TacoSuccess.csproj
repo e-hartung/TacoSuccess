@@ -132,6 +132,7 @@
     <Content Include="Images\Tomatoes.jpg" />
     <Content Include="Images\Tortilla.jpg" />
     <Content Include="Images\valuebeancheeseburrito.png" />
+    <Content Include="Landing.aspx" />
     <Content Include="OrderDetails.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="Ingredients.aspx.designer.cs">
       <DependentUpon>Ingredients.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Landing.aspx.cs">
+      <DependentUpon>Landing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Landing.aspx.designer.cs">
+      <DependentUpon>Landing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CartItemList.cs" />
