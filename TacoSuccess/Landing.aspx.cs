@@ -13,5 +13,15 @@ namespace TacoSuccess
         {
 
         }
+
+        protected void Button_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Products.aspx");
+        }
+
+        protected void lbtnSignUp_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
