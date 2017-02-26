@@ -11,21 +11,51 @@ namespace TacoSuccess
 {
     public partial class Ingredients : System.Web.UI.Page
     {
+        tacosuccessv2Entities tse;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            
 
-            // TO DO: for data sources, replace r.entreeID = 1 with session variable or whatever we use to pull selected entree id from menu page (currently using entree 1 for testing)
-            SqlDataSource1.SelectCommand = "SELECT * FROM ingredients WHERE ingredientsID NOT IN (SELECT ingredientsID FROM recipe WHERE entreeID = 1)";
-            SqlDataSource2.SelectCommand = "SELECT * FROM entree WHERE entreeID = 1";
-            // SqlDataSource3.SelectParameters.Add("entreeID", "1");
-            SqlDataSource3.SelectCommand = "SELECT * FROM recipe r JOIN ingredients i ON r.ingredientsID = i.ingredientsID WHERE r.entreeID = 1";
+            tse = new tacosuccessv2Entities();
 
-            // this gets entree name from entree table and assigns it to entree label
-            DataView oDV = (System.Data.DataView)SqlDataSource2.Select(DataSourceSelectArguments.Empty);
-            lblEntree.Text = oDV.Table.Rows[0].Field<string>(3);
+            if (!IsPostBack)
+            {
+                var entreeNameQuery = from en in tse.entrees
+                                      where en.entreeID == 1000
+                                      select en.entreeName;
+
+
+                var ingredientQuery = from i in tse.ingredients
+                                      orderby i.ingredientsID
+                                      select i;
+
+
+                var recipeQuery = from r in tse.recipes
+                                  join i in tse.ingredients on r.ingredientsID equals i.ingredientsID
+                                  where r.entreeID == 1000
+                                  orderby r.ingredientsID
+                                  select new { r.ingredientsID, r.quantity, i.ingredientsName };
+
+
+                var additionalIngredientQuery = from i in tse.ingredients
+                                                where !(from r in tse.recipes where r.entreeID == 1000 select r.ingredientsID).Contains(i.ingredientsID)
+                                                select i;
+
+
+
+                // there has to be a better way to do this but this works for now
+                var hmm = entreeNameQuery.ToList();
+                lblEntreeName.Text = hmm[0];
+
+
+
+                dlIngredientsBuild.DataSource = recipeQuery.ToList();
+                DataBind();
+
+                dlIngredientsAdd.DataSource = additionalIngredientQuery.ToList();
+                DataBind();
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -39,10 +69,10 @@ namespace TacoSuccess
             // Entree entree = ???
             //Then  I'll make a new cartItem object
             //CartItem cartItem = new CartItem(entree);
-            int count = DataList1.Items.Count;
+            int count = dlIngredientsBuild.Items.Count;
             for (int i = 0; i < count; i++)
             {
-                TextBox txtBx = DataList1.Items[i].FindControl("txtBxIngredientQuantity") as TextBox;
+                TextBox txtBx = dlIngredientsBuild.Items[i].FindControl("txtBxIngredientQuantity") as TextBox;
                 if (txtBx.Text == "" || txtBx.Text == "0")
                     continue; 
                 int quantity = Convert.ToInt32(txtBx.Text);
