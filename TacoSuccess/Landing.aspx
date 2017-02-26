@@ -27,6 +27,8 @@
         <p>Kid's Menu</p>
         <asp:LinkButton ID="lbtnBeverages" runat="server" OnClick="Button_Click"><img src="Images/fountaindrinks.png" alt="Beverages" height="100" width="150"/></asp:LinkButton>
         <p>Beverages</p>
+        <asp:LinkButton ID="lbtnDesserts" runat="server" OnClick="Button_Click"><img src="Images/cinnamonchurros.png" alt="Desserts" height="100" width="150"/></asp:LinkButton>
+        <p>Desserts</p>
         
     </div>
     </form>
