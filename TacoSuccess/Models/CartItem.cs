@@ -11,11 +11,11 @@ namespace TacoSuccess.Models
     {
         public List<SelectedIngredient> selectedIngredients {get;set;}
          
-        public Entree Entree { get; set; }
+        public entree Entree { get; set; }
 
         public CartItem() { }
 
-        public CartItem(Entree entree)
+        public CartItem(entree entree)
         {
             this.Entree = entree;
             selectedIngredients = new List<SelectedIngredient>();
@@ -28,8 +28,8 @@ namespace TacoSuccess.Models
             selectedIngredients = new List<SelectedIngredient>();
             this.selectedIngredients = cartItem.selectedIngredients;
         }*/
-
-        public void AddSelectedIngredient(Ingredient ingredient, int quantity)
+        
+        public void AddSelectedIngredient(ingredient ingredient, int quantity)
         {
             selectedIngredients.Add(new SelectedIngredient(ingredient, quantity));
         }

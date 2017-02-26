@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tacosuccessv2Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="addressID" />
+          </Key>
+          <Property Name="addressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="line1" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="line2" Type="varchar" MaxLength="60" />
+          <Property Name="city" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="zipCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="disabled" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="custombuild">
+          <Key>
+            <PropertyRef Name="entreeID" />
+            <PropertyRef Name="itemID" />
+            <PropertyRef Name="ingredientsID" />
+          </Key>
+          <Property Name="entreeID" Type="int" Nullable="false" />
+          <Property Name="itemID" Type="int" Nullable="false" />
+          <Property Name="ingredientsID" Type="int" Nullable="false" />
+          <Property Name="buildPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="addressID" Type="int" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stationID" Type="int" Nullable="false" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="entree">
+          <Key>
+            <PropertyRef Name="entreeID" />
+          </Key>
+          <Property Name="entreeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryID" Type="int" Nullable="false" />
+          <Property Name="entreeName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+          <Property Name="entreePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ingredients">
+          <Key>
+            <PropertyRef Name="ingredientsID" />
+          </Key>
+          <Property Name="ingredientsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vendorID" Type="int" Nullable="false" />
+          <Property Name="ingredientsCode" Type="varchar" MaxLength="10" />
+          <Property Name="ingredientsName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="qtyOnHand" Type="int" Nullable="false" />
+          <Property Name="dateAdded" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="markupPercent" Type="int" />
+          <Property Name="cost" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="orderdetails">
+          <Key>
+            <PropertyRef Name="detailsID" />
+          </Key>
+          <Property Name="detailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="customBuildID" Type="int" Nullable="false" />
+          <Property Name="entreeID" Type="int" Nullable="false" />
+          <Property Name="ingredientsID" Type="int" Nullable="false" />
+          <Property Name="orderPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stationID" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="orderDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="taxAmount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="cardType" Type="int" Nullable="false" />
+          <Property Name="cardNumber" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="cardExpress" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="billingAddressID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recipe">
+          <Key>
+            <PropertyRef Name="entreeID" />
+            <PropertyRef Name="ingredientsID" />
+          </Key>
+          <Property Name="entreeID" Type="int" Nullable="false" />
+          <Property Name="ingredientsID" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="station">
+          <Key>
+            <PropertyRef Name="stationID" />
+          </Key>
+          <Property Name="stationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stationName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vendor">
+          <Key>
+            <PropertyRef Name="vendorID" />
+          </Key>
+          <Property Name="vendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vendorName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="tacosuccessv2ModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="custombuild" EntityType="Self.custombuild" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="entree" EntityType="Self.entree" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="ingredients" EntityType="Self.ingredients" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="orderdetails" EntityType="Self.orderdetails" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="recipe" EntityType="Self.recipe" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="station" EntityType="Self.station" Schema="tacosuccessv2" store:Type="Tables" />
+          <EntitySet Name="vendor" EntityType="Self.vendor" Schema="tacosuccessv2" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tacosuccessv2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="addressID" />
+          </Key>
+          <Property Name="addressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="line1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="line2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="disabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="categoryID" />
+          </Key>
+          <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="custombuild">
+          <Key>
+            <PropertyRef Name="entreeID" />
+            <PropertyRef Name="itemID" />
+            <PropertyRef Name="ingredientsID" />
+          </Key>
+          <Property Name="entreeID" Type="Int32" Nullable="false" />
+          <Property Name="itemID" Type="Int32" Nullable="false" />
+          <Property Name="ingredientsID" Type="Int32" Nullable="false" />
+          <Property Name="buildPrice" Type="Decimal" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="addressID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stationID" Type="Int32" Nullable="false" />
+          <Property Name="emailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="entree">
+          <Key>
+            <PropertyRef Name="entreeID" />
+          </Key>
+          <Property Name="entreeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryID" Type="Int32" Nullable="false" />
+          <Property Name="entreeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="entreePrice" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ingredient">
+          <Key>
+            <PropertyRef Name="ingredientsID" />
+          </Key>
+          <Property Name="ingredientsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vendorID" Type="Int32" Nullable="false" />
+          <Property Name="ingredientsCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ingredientsName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="qtyOnHand" Type="Int32" Nullable="false" />
+          <Property Name="dateAdded" Type="DateTime" Nullable="false" />
+          <Property Name="markupPercent" Type="Int32" />
+          <Property Name="cost" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="detailsID" />
+          </Key>
+          <Property Name="detailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="customBuildID" Type="Int32" Nullable="false" />
+          <Property Name="entreeID" Type="Int32" Nullable="false" />
+          <Property Name="ingredientsID" Type="Int32" Nullable="false" />
+          <Property Name="orderPrice" Type="Decimal" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stationID" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="orderDate" Type="DateTime" Nullable="false" />
+          <Property Name="taxAmount" Type="Decimal" Nullable="false" />
+          <Property Name="cardType" Type="Int32" Nullable="false" />
+          <Property Name="cardNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardExpress" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billingAddressID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recipe">
+          <Key>
+            <PropertyRef Name="entreeID" />
+            <PropertyRef Name="ingredientsID" />
+          </Key>
+          <Property Name="entreeID" Type="Int32" Nullable="false" />
+          <Property Name="ingredientsID" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="station">
+          <Key>
+            <PropertyRef Name="stationID" />
+          </Key>
+          <Property Name="stationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vendor">
+          <Key>
+            <PropertyRef Name="vendorID" />
+          </Key>
+          <Property Name="vendorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vendorName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="tacosuccessv2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="addresses" EntityType="Self.address" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="custombuilds" EntityType="Self.custombuild" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="entrees" EntityType="Self.entree" />
+          <EntitySet Name="ingredients" EntityType="Self.ingredient" />
+          <EntitySet Name="orderdetails" EntityType="Self.orderdetail" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="recipes" EntityType="Self.recipe" />
+          <EntitySet Name="stations" EntityType="Self.station" />
+          <EntitySet Name="vendors" EntityType="Self.vendor" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tacosuccessv2ModelStoreContainer" CdmEntityContainer="tacosuccessv2Entities">
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="addressID" ColumnName="addressID" />
+                <ScalarProperty Name="line1" ColumnName="line1" />
+                <ScalarProperty Name="line2" ColumnName="line2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="disabled" ColumnName="disabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="custombuilds">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.custombuild">
+              <MappingFragment StoreEntitySet="custombuild">
+                <ScalarProperty Name="entreeID" ColumnName="entreeID" />
+                <ScalarProperty Name="itemID" ColumnName="itemID" />
+                <ScalarProperty Name="ingredientsID" ColumnName="ingredientsID" />
+                <ScalarProperty Name="buildPrice" ColumnName="buildPrice" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="addressID" ColumnName="addressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="stationID" ColumnName="stationID" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="entrees">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.entree">
+              <MappingFragment StoreEntitySet="entree">
+                <ScalarProperty Name="entreeID" ColumnName="entreeID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="entreeName" ColumnName="entreeName" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="entreePrice" ColumnName="entreePrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ingredients">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.ingredient">
+              <MappingFragment StoreEntitySet="ingredients">
+                <ScalarProperty Name="ingredientsID" ColumnName="ingredientsID" />
+                <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+                <ScalarProperty Name="ingredientsCode" ColumnName="ingredientsCode" />
+                <ScalarProperty Name="ingredientsName" ColumnName="ingredientsName" />
+                <ScalarProperty Name="qtyOnHand" ColumnName="qtyOnHand" />
+                <ScalarProperty Name="dateAdded" ColumnName="dateAdded" />
+                <ScalarProperty Name="markupPercent" ColumnName="markupPercent" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderdetails">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.orderdetail">
+              <MappingFragment StoreEntitySet="orderdetails">
+                <ScalarProperty Name="detailsID" ColumnName="detailsID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="customBuildID" ColumnName="customBuildID" />
+                <ScalarProperty Name="entreeID" ColumnName="entreeID" />
+                <ScalarProperty Name="ingredientsID" ColumnName="ingredientsID" />
+                <ScalarProperty Name="orderPrice" ColumnName="orderPrice" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="stationID" ColumnName="stationID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
+                <ScalarProperty Name="cardType" ColumnName="cardType" />
+                <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
+                <ScalarProperty Name="cardExpress" ColumnName="cardExpress" />
+                <ScalarProperty Name="billingAddressID" ColumnName="billingAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recipes">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.recipe">
+              <MappingFragment StoreEntitySet="recipe">
+                <ScalarProperty Name="entreeID" ColumnName="entreeID" />
+                <ScalarProperty Name="ingredientsID" ColumnName="ingredientsID" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stations">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.station">
+              <MappingFragment StoreEntitySet="station">
+                <ScalarProperty Name="stationID" ColumnName="stationID" />
+                <ScalarProperty Name="stationName" ColumnName="stationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vendors">
+            <EntityTypeMapping TypeName="tacosuccessv2Model.vendor">
+              <MappingFragment StoreEntitySet="vendor">
+                <ScalarProperty Name="vendorID" ColumnName="vendorID" />
+                <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

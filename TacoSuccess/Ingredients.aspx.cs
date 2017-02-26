@@ -11,9 +11,11 @@ namespace TacoSuccess
 {
     public partial class Ingredients : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            
 
             // TO DO: for data sources, replace r.entreeID = 1 with session variable or whatever we use to pull selected entree id from menu page (currently using entree 1 for testing)
             SqlDataSource1.SelectCommand = "SELECT * FROM ingredients WHERE ingredientsID NOT IN (SELECT ingredientsID FROM recipe WHERE entreeID = 1)";

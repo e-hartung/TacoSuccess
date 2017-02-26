@@ -12,12 +12,14 @@ namespace TacoSuccess.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class entree
+    public partial class orderdetail
     {
+        public int detailsID { get; set; }
+        public int orderID { get; set; }
+        public int customBuildID { get; set; }
         public int entreeID { get; set; }
-        public int categoryID { get; set; }
-        public string entreeName { get; set; }
-        public string description { get; set; }
-        public decimal entreePrice { get; set; }
+        public int ingredientsID { get; set; }
+        public decimal orderPrice { get; set; }
+        public Nullable<int> quantity { get; set; }
     }
 }

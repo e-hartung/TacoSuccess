@@ -17,6 +17,13 @@ namespace TacoSuccess.Models
             get { return cartItems.Count; }
         }
 
+        public decimal GetMarkupPrice(decimal cost, decimal markup)
+        {
+            decimal markupPrice;
+            markupPrice = (cost * markup);
+            return markupPrice;
+        }
+
         public decimal GetSubtotal()
         {
             decimal total = 0;
@@ -24,7 +31,7 @@ namespace TacoSuccess.Models
             {
                 foreach (SelectedIngredient i in item.selectedIngredients)
                 {
-                    total += (i.Ingredient.GetMarkupPrice() * i.Quantity);
+                    total += (GetMarkupPrice(i.Ingredient.cost.Value, i.Ingredient.markupPercent.Value) * i.Quantity);
                 }
                 total += item.Entree.entreePrice;
             }

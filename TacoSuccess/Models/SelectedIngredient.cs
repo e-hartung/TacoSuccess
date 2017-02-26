@@ -7,10 +7,10 @@ namespace TacoSuccess.Models
 {
     public class SelectedIngredient
     {
-        public Ingredient Ingredient { get; set; }
+        public ingredient Ingredient { get; set; }
         public int Quantity { get; set; }
         public SelectedIngredient() { }
-        public SelectedIngredient(Ingredient ingredient, int quantity)
+        public SelectedIngredient(ingredient ingredient, int quantity)
         {
             this.Ingredient = ingredient;
             this.Quantity = quantity;
