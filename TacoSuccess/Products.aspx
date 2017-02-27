@@ -13,8 +13,18 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
-        <asp:Button ID="btnCart" runat="server" OnClick="btnCart_Click" Text="Cart" Visible="False" />
+        <asp:DataList ID="dtlProducts" runat="server" DataSourceID="SqlDataSource1">
+            <ItemTemplate>
+                <asp:ImageButton ID="ibtnProduct" runat="server" />
+                <asp:LinkButton ID="lbtnProduct" runat="server" Text='<%# Eval("entreeName") %>'></asp:LinkButton>
+            </ItemTemplate>
+        </asp:DataList>  
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeName FROM entree WHERE categoryID = ?">
+            <SelectParameters>
+                <asp:QueryStringParameter Name="categoryID" QueryStringField="category" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <!--<asp:Button ID="btnCart" runat="server" OnClick="btnCart_Click" Text="Cart" Visible="False" />-->
     
     </div>
     </form>
