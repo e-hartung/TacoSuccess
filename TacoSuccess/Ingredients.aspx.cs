@@ -19,10 +19,13 @@ namespace TacoSuccess
 
             tse = new tacosuccessv2Entities();
 
+            int entreeID;
+            int.TryParse(Request.QueryString["entree"], out entreeID); // example url format: /Ingredients.aspx?entree=1000
+
             if (!IsPostBack)
             {
                 var entreeNameQuery = from en in tse.entrees
-                                      where en.entreeID == 1000
+                                      where en.entreeID == entreeID
                                       select en.entreeName;
 
 
@@ -33,13 +36,13 @@ namespace TacoSuccess
 
                 var recipeQuery = from r in tse.recipes
                                   join i in tse.ingredients on r.ingredientsID equals i.ingredientsID
-                                  where r.entreeID == 1000
+                                  where r.entreeID == entreeID
                                   orderby r.ingredientsID
                                   select new { r.ingredientsID, r.quantity, i.ingredientsName };
 
 
                 var additionalIngredientQuery = from i in tse.ingredients
-                                                where !(from r in tse.recipes where r.entreeID == 1000 select r.ingredientsID).Contains(i.ingredientsID)
+                                                where !(from r in tse.recipes where r.entreeID == entreeID select r.ingredientsID).Contains(i.ingredientsID)
                                                 select i;
 
 
