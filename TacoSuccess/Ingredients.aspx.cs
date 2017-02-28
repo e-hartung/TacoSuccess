@@ -97,5 +97,10 @@ namespace TacoSuccess
         {
             Response.Redirect("~/Cart.aspx");
         }
+
+        protected void btnAddIngredient_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

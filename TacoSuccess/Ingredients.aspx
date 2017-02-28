@@ -23,7 +23,7 @@
             <h3>Ingredients</h3>
             <asp:DataList ID="dlIngredientsBuild" runat="server">
                 <ItemTemplate>
-                    <asp:TextBox ID="txtBxIngredientsBuildItemQuantity" runat="server" TextMode="Number" Width="40px" Text='<%# Eval("quantity") %>'></asp:TextBox>
+                    <asp:TextBox ID="txtBxIngredientQuantity" runat="server" TextMode="Number" Width="40px" Text='<%# Eval("quantity") %>'></asp:TextBox>
                     <%# Eval("ingredientsName") %>
                 </ItemTemplate>
             </asp:DataList>
@@ -33,7 +33,7 @@
             <h2>Add Additional Items</h2>
             <asp:DataList ID="dlIngredientsAdd" runat="server" RepeatColumns="2">
                 <ItemTemplate>
-                    <asp:Button ID="btnAddIngredient" runat="server" Text="+" />
+                    <asp:Button ID="btnAddIngredient" runat="server" Text="+" OnClick="btnAddIngredient_Click" />
                     <%# Eval("ingredientsName") %>
                 </ItemTemplate>
             </asp:DataList>
