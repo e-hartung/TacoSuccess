@@ -12,21 +12,39 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:Label ID="lblCardholder" runat="server" Text="Cardholder Name"></asp:Label><asp:TextBox ID="txtBxCardholder" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="requiredValidatorCardholderName" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCardholder" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
-        <br />
-        <asp:Label ID="lblCardNumber" runat="server" Text="Card Number"></asp:Label><asp:TextBox ID="txtBxCardNumber" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="requiredValidatorCardNumber" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCardNumber" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
-        <br />
-        <asp:Label ID="lblExpirationDate" runat="server" Text="Exp Date"></asp:Label><asp:DropDownList ID="ddlMonth" runat="server"></asp:DropDownList><asp:DropDownList ID="ddlYear" runat="server"></asp:DropDownList>
-        <asp:Label ID="lblExpiredMessage" runat="server" CssClass="text-danger"></asp:Label>
-        <br />
-        <asp:Label ID="lblCVV2" runat="server" Text="CVV2"></asp:Label><asp:TextBox ID="txtBxCVV2" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="requiredValidatorCVV2" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCVV2" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
-        <br />
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit Order" OnClick="btnSubmit_Click" /><asp:Button ID="btnCart" runat="server" Text="Back to Cart" OnClick="btnCart_Click" />
-    </div>
+        <div>
+            <asp:Label ID="lblFirstName" runat="server" Text="First Name:"></asp:Label><asp:TextBox ID="txtBxFirstName" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="requiredValidatorFirstName" runat="server" ErrorMessage="Required" ControlToValidate="txtBxFirstName" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="lblMiddleName" runat="server" Text="Middle Name:"></asp:Label><asp:TextBox ID="txtBxMiddleName" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblLastName" runat="server" Text="Last Name:"></asp:Label><asp:TextBox ID="txtBxLastName" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="requiredValidatorLastName" runat="server" ErrorMessage="Required" ControlToValidate="txtBxLastName" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+            <br />
+        </div>
+        <div>
+            <asp:Label ID="lblCardNumber" runat="server" Text="Card Number:"></asp:Label><asp:TextBox ID="txtBxCardNumber" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="requiredValidatorCardNumber" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCardNumber" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="lblExpirationDate" runat="server" Text="Exp Date:"></asp:Label><asp:DropDownList ID="ddlMonth" runat="server"></asp:DropDownList><asp:DropDownList ID="ddlYear" runat="server"></asp:DropDownList>
+            <asp:Label ID="lblExpiredMessage" runat="server" CssClass="text-danger"></asp:Label>
+            <br />
+            <asp:Label ID="lblCVV2" runat="server" Text="CVV2:"></asp:Label><asp:TextBox ID="txtBxCVV2" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="requiredValidatorCVV2" runat="server" ErrorMessage="Required" ControlToValidate="txtBxCVV2" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+        </div>
+        <div>
+            <asp:Label ID="lblAddressLine1" runat="server" Text="Address Line 1:"></asp:Label><asp:TextBox ID="txtBxAddressLine1" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="requiredValidatorAddressLine1" runat="server" ErrorMessage="Required" ControlToValidate="txtBxAddressLine1" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+            <br />
+            <asp:Label ID="lblAddressLine2" runat="server" Text="Address Line 2:"></asp:Label><asp:TextBox ID="txtBxAddressLine2" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblPhone" runat="server" Text="Phone Number:"></asp:Label><asp:TextBox ID="txtBxPhone" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="requiredValidatorPhone" runat="server" ErrorMessage="Required" ControlToValidate="txtBxPhone" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+        </div>
+        <div>
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel Order" OnClick="btnCancel_Click" />
+            <asp:Button ID="btnSubmit" runat="server" Text="Process Payment" OnClick="btnSubmit_Click" />
+        </div>
     </form>
 </body>
 </html>
