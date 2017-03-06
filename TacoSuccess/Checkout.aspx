@@ -38,6 +38,12 @@
             <br />
             <asp:Label ID="lblAddressLine2" runat="server" Text="Address Line 2:"></asp:Label><asp:TextBox ID="txtBxAddressLine2" runat="server"></asp:TextBox>
             <br />
+            <asp:Label ID="lblCity" runat="server" Text="City:"></asp:Label><asp:TextBox ID="txtBxCity" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblState" runat="server" Text="State:"></asp:Label><asp:TextBox ID="txtBxState" runat="server"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblZip" runat="server" Text="Zip Code:"></asp:Label><asp:TextBox ID="txtBxZip" runat="server"></asp:TextBox>
+            <br />
             <asp:Label ID="lblPhone" runat="server" Text="Phone Number:"></asp:Label><asp:TextBox ID="txtBxPhone" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="requiredValidatorPhone" runat="server" ErrorMessage="Required" ControlToValidate="txtBxPhone" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
         </div>
