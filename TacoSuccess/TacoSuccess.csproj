@@ -245,6 +245,7 @@
     <Compile Include="Models\employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\IngredientInfo.cs" />
     <Compile Include="Models\Ingredient.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
