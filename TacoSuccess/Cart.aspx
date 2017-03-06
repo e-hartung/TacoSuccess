@@ -14,16 +14,16 @@
     <form id="form1" runat="server">
     
     <div>
-        <asp:DataList ID="DataList1" runat="server" DataSourceID="ObjectDataSource1">
+        <asp:DataList ID="DataList1" runat="server">
             <ItemTemplate>
                 <asp:Image ID="imgProduct" runat="server" />
-                <asp:Label ID="lblProduct" runat="server"></asp:Label>
+                <asp:Label ID="lblProduct" runat="server" Text='<%# Eval("entree.entreeName") %>'></asp:Label>
                 <asp:BulletedList ID="bltLstExtras" runat="server"></asp:BulletedList>
                 
 
             </ItemTemplate>
         </asp:DataList>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
+        <!--<asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>-->
         <!--<asp:Repeater ID="Repeater1" runat="server">
             <ItemTemplate>
                 <asp:Image ID="imgProduct" runat="server" />

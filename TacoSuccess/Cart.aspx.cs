@@ -12,15 +12,23 @@ namespace TacoSuccess
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-             foreach (object cartItem in Session)
-             {
-                CartItem c = (CartItem) cartItem;
-                BulletedList bList = new BulletedList();
-                bList.DataSource = c.selectedIngredients;
-                bList.DataBind();
-                //I'm working on this
-             }
-           
+            // get cart item list from session
+            List<CartItem> items = (List<CartItem>)Session["cart"];
+
+            // bind items to data list
+            DataList1.DataSource = items;
+            DataList1.DataBind();
+
+             // put ingredients into bulleted list
+             //foreach (object cartItem in Session)
+             //{
+             //   CartItem c = (CartItem) cartItem;
+             //   BulletedList bList = new BulletedList();
+             //   bList.DataSource = c.selectedIngredients;
+             //   bList.DataBind();
+             //   //I'm working on this
+             //}
+             
         }
 
       
@@ -36,7 +44,7 @@ namespace TacoSuccess
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Checkout.aspx");
         }
 
         protected void btnRemoveItem_Click(object sender, EventArgs e)
