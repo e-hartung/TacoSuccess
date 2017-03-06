@@ -58,6 +58,24 @@ namespace TacoSuccess {
         protected global::System.Web.UI.WebControls.Label lblEntreeName;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// upIngredients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upIngredients;
+        
+        /// <summary>
         /// dlIngredientsBuild control.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace TacoSuccess {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataList dlIngredientsBuild;
+        
+        /// <summary>
+        /// upAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upAdd;
         
         /// <summary>
         /// dlIngredientsAdd control.

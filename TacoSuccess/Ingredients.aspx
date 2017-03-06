@@ -21,22 +21,35 @@
             <asp:Image ID="imgEntree" runat="server" /><%-- image source will come from entree table --%>
             <asp:Label ID="lblEntreeName" runat="server" Text="" CssClass="h2"></asp:Label>
             <h3>Ingredients</h3>
-            <asp:DataList ID="dlIngredientsBuild" runat="server">
-                <ItemTemplate>
-                    <asp:TextBox ID="txtBxIngredientQuantity" runat="server" TextMode="Number" Width="40px" Text='<%# Eval("quantity") %>'></asp:TextBox>
-                    <%# Eval("ingredientsName") %>
-                </ItemTemplate>
-            </asp:DataList>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:UpdatePanel ID="upIngredients" runat="server">
+                <ContentTemplate>
+                    <asp:DataList ID="dlIngredientsBuild" runat="server">
+
+                        <ItemTemplate>
+                            <asp:TextBox ID="txtBxQuantity" runat="server" Width="40" Text='<%# Eval("quantity") %>'></asp:TextBox>
+                            <asp:Label ID="lblIngredientName" runat="server" Text='<%# Eval("ingredientsName") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:DataList>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
 
         <div class="add-ingredients">
             <h2>Add Additional Items</h2>
-            <asp:DataList ID="dlIngredientsAdd" runat="server" RepeatColumns="2">
-                <ItemTemplate>
-                    <asp:Button ID="btnAddIngredient" runat="server" Text="+" OnClick="btnAddIngredient_Click" />
-                    <%# Eval("ingredientsName") %>
-                </ItemTemplate>
-            </asp:DataList>
+            <asp:UpdatePanel ID="upAdd" runat="server">
+                <ContentTemplate>
+                    <asp:DataList ID="dlIngredientsAdd" runat="server" RepeatColumns="2">
+
+                        <ItemTemplate>
+                            <asp:Button ID="btnAddIngredient" runat="server" Text="+" OnClick="btnAddIngredient_Click" CausesValidation="False" CommandArgument='<%# Eval("ingredientsID") %>' />
+                            <asp:Label ID="lblIngredientName" runat="server" Text='<%# Eval("ingredientsName") %>'></asp:Label>
+                        </ItemTemplate>
+
+                    </asp:DataList>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <asp:Button ID="btnCancel" runat="server" Text="Cancel Item" OnClick="btnCancel_Click" CssClass="btn btn-default"/>
             <asp:Button ID="btnAddToCart" runat="server" Text="Add To Cart" OnClick="btnAddToCart_Click" CssClass="btn btn-primary" />
         </div>
