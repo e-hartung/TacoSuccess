@@ -18,7 +18,7 @@
             <ItemTemplate>
                 <asp:Image ID="imgProduct" runat="server" />
                 <asp:Label ID="lblProduct" runat="server" Text='<%# Eval("entree.entreeName") %>'></asp:Label>
-                <asp:BulletedList ID="bltLstExtras" runat="server"></asp:BulletedList>
+                <asp:BulletedList ID="bltLstExtras" runat="server" DataSource='<%# Eval("selectedIngredients") %>'></asp:BulletedList>
                 
 
             </ItemTemplate>

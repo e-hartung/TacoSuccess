@@ -14,11 +14,17 @@ namespace TacoSuccess
         public int currentMonth = DateTime.Now.Month;
         public int currentYear = DateTime.Now.Year;
 
+        public decimal tax;
+        public decimal total;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
             tse = new tacosuccessv2Entities();
+            
+            decimal.TryParse(Session["tax"].ToString(), out tax);
+            decimal.TryParse(Session["grandTotal"].ToString(), out total);
 
             if (!IsPostBack)
                 for (int i = 1; i <= 12; i++)
@@ -62,29 +68,39 @@ namespace TacoSuccess
                 };
 
                 tse.addresses.Add(address);
+                tse.SaveChanges();
+
+                int addressID = address.addressID;
 
 
-                // need to find how to add to one table to generate id for order and then get that id to add to orderdetail table
+                Random rnd = new Random();
                 order order = new order
                 {
+                    stationID = rnd.Next(1, 5),
+                    orderDate = DateTime.Today,
+                    taxAmount = tax,
+                    cardType = GetCardType(txtBxCardNumber.Text),
                     cardNumber = txtBxCardNumber.Text,
-                    cardExpress = txtBxCVV2.Text
+                    cardExpress = txtBxCVV2.Text,
+                    billingAddressID = addressID
                 };
 
                 tse.orders.Add(order);
+                tse.SaveChanges();
+
+                int orderID = order.orderID;
 
 
                 orderdetail orderDetail = new orderdetail
                 {
-
+                    orderID = orderID,
+                    orderPrice = total
                 };
 
                 tse.orderdetails.Add(orderDetail);
-
-
-                // submit changes to db
                 tse.SaveChanges();
 
+                Session.Clear();
                 Response.Redirect("~/Confirmation.aspx");
             }
         }
@@ -92,6 +108,19 @@ namespace TacoSuccess
         protected void btnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public int GetCardType(string cardNumber)
+        {
+            // using value of start of card number as the card type
+            // 3 = amex
+            // 4 = visa
+            // 5 = mastercard
+            // 6 = discover
+            string firstNumber = cardNumber.Substring(0, 1);
+            int firstNum;
+            int.TryParse(firstNumber, out firstNum);
+            return firstNum;
         }
     }
 }
