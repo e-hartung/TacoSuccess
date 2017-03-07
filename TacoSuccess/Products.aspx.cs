@@ -9,6 +9,7 @@ namespace TacoSuccess
 {
     public partial class Products : System.Web.UI.Page
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             // shows cart button if cart contains items
@@ -16,11 +17,19 @@ namespace TacoSuccess
             {
                 btnCart.Visible = true;
             }*/
+           
         }
 
         protected void btnCart_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Cart.aspx");
+        }
+
+        protected void lbtnProduct_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            string entreeID = btn.CommandArgument;
+            Response.Redirect("~/Ingredients.aspx");
         }
     }
 }

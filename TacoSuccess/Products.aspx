@@ -15,11 +15,11 @@
     <div>
         <asp:DataList ID="dtlProducts" runat="server" DataSourceID="SqlDataSource1">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnProduct" runat="server" />
-                <asp:LinkButton ID="lbtnProduct" runat="server" Text='<%# Eval("entreeName") %>'></asp:LinkButton>
+                <asp:ImageButton ID="ibtnProduct" runat="server" /><!-- Image of entree. I will add url once images have been placed in database-->
+                <asp:LinkButton ID="lbtnProduct" runat="server" Text='<%# Eval("entreeName") %>' OnClick="lbtnProduct_Click" CommandArgument='<%# Eval("entreeID") %>'></asp:LinkButton>
             </ItemTemplate>
         </asp:DataList>  
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeName FROM entree WHERE categoryID = ?">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeID, entreeName, imagePath FROM entree WHERE categoryID = ?">
             <SelectParameters>
                 <asp:QueryStringParameter Name="categoryID" QueryStringField="category" Type="Int32" />
             </SelectParameters>
