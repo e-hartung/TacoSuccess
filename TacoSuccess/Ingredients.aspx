@@ -13,12 +13,13 @@
 <body>
     <form id="form1" runat="server">
     <div class="header">
+        <asp:Label ID="lblEntreeNameHeader" runat="server" Text="" CssClass="h2"></asp:Label>
         <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Prev" />
         <asp:Button ID="btnCart" runat="server" Text="Cart" OnClick="btnCart_Click" />
     </div>
     <div class="main">
         <div class="ingredient-build">
-            <asp:Image ID="imgEntree" runat="server" /><%-- image source will come from entree table --%>
+            <asp:Image ID="imgEntree" runat="server" Width="250px" />
             <asp:Label ID="lblEntreeName" runat="server" Text="" CssClass="h2"></asp:Label>
             <h3>Ingredients</h3>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>

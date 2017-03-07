@@ -14,15 +14,20 @@ namespace TacoSuccess
 
         }
 
+        protected void btnCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cart.aspx");
+        }
+
         /*protected void Button_Click(object sender, EventArgs e)
         {
             
            // Response.Redirect("~/Products.aspx");
         }*/
 
-       /* protected void lbtnSignUp_Click(object sender, EventArgs e)
-        {
-            
-        }*/
+        /* protected void lbtnSignUp_Click(object sender, EventArgs e)
+         {
+
+         }*/
     }
 }

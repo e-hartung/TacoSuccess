@@ -12,6 +12,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="header">
+            <asp:Label ID="lblCheckoutHeader" runat="server" Text="Payment Info" CssClass="h2"></asp:Label>
+            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Prev" CausesValidation="False" />
+            <asp:Button ID="btnCart" runat="server" Text="Cart" OnClick="btnCart_Click" CausesValidation="False" />
+        </div>
         <div>
             <asp:Label ID="lblFirstName" runat="server" Text="First Name:"></asp:Label><asp:TextBox ID="txtBxFirstName" runat="server"></asp:TextBox>
             <asp:RequiredFieldValidator ID="requiredValidatorFirstName" runat="server" ErrorMessage="Required" ControlToValidate="txtBxFirstName" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
@@ -48,7 +53,7 @@
             <asp:RequiredFieldValidator ID="requiredValidatorPhone" runat="server" ErrorMessage="Required" ControlToValidate="txtBxPhone" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
         </div>
         <div>
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel Order" OnClick="btnCancel_Click" />
+            <asp:Button ID="btnCancel" runat="server" Text="Cancel Order" OnClick="btnCancel_Click" CausesValidation="False" />
             <asp:Button ID="btnSubmit" runat="server" Text="Process Payment" OnClick="btnSubmit_Click" />
         </div>
     </form>

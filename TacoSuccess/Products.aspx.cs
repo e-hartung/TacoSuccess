@@ -26,9 +26,12 @@ namespace TacoSuccess
                 var entreeQuery = from en in tse.entrees
                                   where en.categoryID == categoryID
                                   select en;
+                
 
                 dtlProducts.DataSource = entreeQuery.ToList();
                 dtlProducts.DataBind();
+
+                lblCategoryHeader.Text = GetCategoryName(categoryID);
 
                 // shows cart button if cart contains items
                 /*if (Session["order"] != null)
@@ -38,9 +41,24 @@ namespace TacoSuccess
             }
         }
 
+        public string GetCategoryName(int categoryID)
+        {
+            var catQuery = from c in tse.categories
+                           where c.categoryID == categoryID
+                           select c.categoryName;
+            var cq = catQuery.ToList();
+            string cat = cq[0];
+            return cat;
+        }
+
         protected void btnCart_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Cart.aspx");
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Landing.aspx");
         }
     }
 }

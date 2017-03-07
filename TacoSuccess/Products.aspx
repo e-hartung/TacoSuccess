@@ -12,6 +12,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="header">
+            <asp:Label ID="lblCategoryHeader" runat="server" CssClass="h2"></asp:Label>
+            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Prev" />
+            <asp:Button ID="btnCart" runat="server" Text="Cart" OnClick="btnCart_Click" />
+        </div>
     <div>
         <asp:DataList ID="dtlProducts" runat="server">
             <ItemTemplate>
@@ -26,7 +31,6 @@
                 <asp:QueryStringParameter Name="categoryID" QueryStringField="category" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>--%>
-        <!--<asp:Button ID="btnCart" runat="server" OnClick="btnCart_Click" Text="Cart" Visible="False" />-->
     
     </div>
     </form>

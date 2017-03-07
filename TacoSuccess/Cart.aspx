@@ -12,12 +12,16 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    
+        <div class="header">
+            <asp:Label ID="lblCartHeader" runat="server" Text="Your Cart" CssClass="h2"></asp:Label>
+            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Prev" />
+            <asp:Button ID="btnCart" runat="server" Text="Cart" OnClick="btnCart_Click" />
+        </div>
     <div>
         <asp:DataList ID="DataList1" runat="server">
             <ItemTemplate>
-                <asp:Image ID="imgProduct" runat="server" />
-                <asp:Label ID="lblProduct" runat="server" Text='<%# Eval("entree.entreeName") %>'></asp:Label>
+                <asp:Image ID="imgProduct" runat="server" ImageUrl='<%# Eval("entree.imagePath","~/Images/{0}") %>' Width="200px" /><br />
+                <asp:Label ID="lblProduct" runat="server" Text='<%# Eval("entree.entreeName") %>' CssClass="h3"></asp:Label>
                 <asp:DataList ID="dlIngredients" runat="server" DataSource='<%# Eval("selectedIngredients") %>'>
                     <ItemTemplate>
                         <asp:Label ID="lblIngredient" runat="server" Text='<%# Eval("ingredient.ingredientsName") %>'></asp:Label>

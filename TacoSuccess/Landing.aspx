@@ -9,6 +9,9 @@
 <body>
     
     <form id="form1" runat="server">
+        <div class="header">
+            <asp:Button ID="btnCart" runat="server" Text="Cart" OnClick="btnCart_Click" />
+        </div>
     <div>
         <asp:LinkButton ID="lbtnMainMenu" runat="server" PostBackUrl="~/Products.aspx?category=1"><img src="Images/1-CARNE-ASADA-WET-BURRITO-PLATO.png" height="100" width="150"/></asp:LinkButton>
         <p>Main Menu</p>
