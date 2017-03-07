@@ -13,17 +13,17 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:DataList ID="dtlProducts" runat="server" DataSourceID="SqlDataSource1">
+        <asp:DataList ID="dtlProducts" runat="server">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnProduct" runat="server" />
-                <asp:LinkButton ID="lbtnProduct" runat="server" Text='<%# Eval("entreeName") %>'></asp:LinkButton>
+                <asp:ImageButton ID="ibtnProduct" runat="server" ImageUrl='<%# Eval("imagePath","~/Images/{0}") %>' PostBackUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>' Width="200px" />
+                <asp:HyperLink ID="lnkProduct" runat="server" NavigateUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>'><%# Eval("entreeName") %></asp:HyperLink>
             </ItemTemplate>
         </asp:DataList>  
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeName FROM entree WHERE categoryID = ?">
+        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeName FROM entree WHERE categoryID = ?">
             <SelectParameters>
                 <asp:QueryStringParameter Name="categoryID" QueryStringField="category" Type="Int32" />
             </SelectParameters>
-        </asp:SqlDataSource>
+        </asp:SqlDataSource>--%>
         <!--<asp:Button ID="btnCart" runat="server" OnClick="btnCart_Click" Text="Cart" Visible="False" />-->
     
     </div>
