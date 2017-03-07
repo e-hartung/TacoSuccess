@@ -42,7 +42,7 @@ namespace TacoSuccess
         protected void btnClearOrder_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("~/Cart.aspx");
+            Response.Redirect("~/Landing.aspx");
       
         }
 
@@ -64,7 +64,7 @@ namespace TacoSuccess
 
         protected void btnContinueOrdering_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Landing.aspx");
         }
 
         protected decimal GetMarkupPrice(decimal cost, decimal markup)
@@ -83,7 +83,7 @@ namespace TacoSuccess
                 foreach (SelectedIngredient si in i.selectedIngredients)
                 {
                     ingredient ing = si.Ingredient;
-                    subtotal += GetMarkupPrice(ing.cost.Value, (1 + (ing.markupPercent.Value/100)) * si.Quantity);
+                    subtotal += GetMarkupPrice(ing.cost.Value, (1 + ing.markupPercent.Value/100));
                 }
                 //subtotal += i.Entree.entreePrice; 
                 // currently only calculating total value of item based on markup price of ingredients, entree price was throwing total way off
@@ -104,6 +104,16 @@ namespace TacoSuccess
             decimal grandTotal = 0;
             grandTotal = subtotal * (1 + salestax);
             return grandTotal;
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cart.aspx");
         }
     }
 }

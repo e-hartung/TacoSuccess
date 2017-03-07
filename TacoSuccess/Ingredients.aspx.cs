@@ -52,7 +52,9 @@ namespace TacoSuccess
                 // there has to be a better way to do this but this works for now
                 var hmm = entreeNameQuery.ToList();
                 lblEntreeName.Text = hmm[0];
+                lblEntreeNameHeader.Text = hmm[0];
 
+                imgEntree.ImageUrl = "~/Images/" + GetEntreeImagePath(entreeID);
 
 
                 foreach (var i in recipeQuery)
@@ -132,9 +134,30 @@ namespace TacoSuccess
             return ent;
         }
 
+        public string GetEntreeImagePath(int entreeID)
+        {
+            var imgQuery = from e in tse.entrees
+                           where e.entreeID == entreeID
+                           select e.imagePath;
+            var iq = imgQuery.ToList();
+            string img = iq[0];
+            return img;
+        }
+
+        public int GetCategoryID(int entreeID)
+        {
+            var catQuery = from e in tse.entrees
+                           where e.entreeID == entreeID
+                           select e.categoryID;
+            var cq = catQuery.ToList();
+            int cat = cq[0];
+            return cat;
+        }
+
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Products.aspx");
+            int categoryID = GetCategoryID(entreeID);
+            Response.Redirect("~/Products.aspx?category=" + categoryID);
         }
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
@@ -188,7 +211,7 @@ namespace TacoSuccess
         {
             Session["ing"] = "";
             Session["rem"] = "";
-            Response.Redirect("~/Products.aspx");
+            Response.Redirect("~/Landing.aspx");
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

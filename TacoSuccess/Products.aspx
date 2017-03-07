@@ -12,19 +12,25 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="header">
+            <asp:Label ID="lblCategoryHeader" runat="server" CssClass="h2"></asp:Label>
+            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Prev" />
+            <asp:Button ID="btnCart" runat="server" Text="Cart" OnClick="btnCart_Click" />
+        </div>
     <div>
-        <asp:DataList ID="dtlProducts" runat="server" DataSourceID="SqlDataSource1">
+        <asp:DataList ID="dtlProducts" runat="server">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnProduct" runat="server" /><!-- Image of entree. I will add url once images have been placed in database-->
-                <asp:LinkButton ID="lbtnProduct" runat="server" Text='<%# Eval("entreeName") %>' OnClick="lbtnProduct_Click" CommandArgument='<%# Eval("entreeID") %>'></asp:LinkButton>
+                <div class="menu-product">
+                    <asp:ImageButton ID="ibtnProduct" runat="server" ImageUrl='<%# Eval("imagePath","~/Images/{0}") %>' PostBackUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>' Width="200px" /><br />
+                    <asp:HyperLink ID="lnkProduct" runat="server" NavigateUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>'><%# Eval("entreeName") %></asp:HyperLink>
+                </div>
             </ItemTemplate>
         </asp:DataList>  
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeID, entreeName, imagePath FROM entree WHERE categoryID = ?">
+        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeName FROM entree WHERE categoryID = ?">
             <SelectParameters>
                 <asp:QueryStringParameter Name="categoryID" QueryStringField="category" Type="Int32" />
             </SelectParameters>
-        </asp:SqlDataSource>
-        <!--<asp:Button ID="btnCart" runat="server" OnClick="btnCart_Click" Text="Cart" Visible="False" />-->
+        </asp:SqlDataSource>--%>
     
     </div>
     </form>

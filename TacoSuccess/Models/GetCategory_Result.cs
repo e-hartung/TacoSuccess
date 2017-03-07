@@ -10,15 +10,8 @@
 namespace TacoSuccess.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class entree
+    public partial class GetCategory_Result
     {
-        public int entreeID { get; set; }
-        public int categoryID { get; set; }
-        public string entreeName { get; set; }
-        public string description { get; set; }
-        public decimal entreePrice { get; set; }
-        public string imagePath { get; set; }
     }
 }

@@ -107,7 +107,8 @@ namespace TacoSuccess
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-
+            Session.Clear();
+            Response.Redirect("~/Landing.aspx");
         }
 
         public int GetCardType(string cardNumber)
@@ -121,6 +122,11 @@ namespace TacoSuccess
             int firstNum;
             int.TryParse(firstNumber, out firstNum);
             return firstNum;
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Cart.aspx");
         }
     }
 }
