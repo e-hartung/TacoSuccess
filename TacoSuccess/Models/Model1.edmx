@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="tacosuccessv2Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="tacosuccessv2Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="address">
           <Key>
             <PropertyRef Name="addressID" />
@@ -68,6 +68,7 @@
           <Property Name="entreeName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="entreePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="imagePath" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="ingredients">
           <Key>
@@ -131,6 +132,25 @@
           <Property Name="vendorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vendorName" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <Function Name="GetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="tacosuccessv2">
+          <Parameter Name="catNum" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetChosenOrderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="tacosuccessv2">
+          <Parameter Name="CusID" Type="int" Mode="In" />
+          <Parameter Name="OrdID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDefaultIngredients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="tacosuccessv2">
+          <Parameter Name="entID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetDetailsForCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="tacosuccessv2">
+          <Parameter Name="custID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getEntreeByCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="tacosuccessv2">
+          <Parameter Name="cat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetIngredients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="tacosuccessv2">
+          <Parameter Name="ingID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="tacosuccessv2ModelStoreContainer">
           <EntitySet Name="address" EntityType="Self.address" Schema="tacosuccessv2" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="tacosuccessv2" store:Type="Tables" />
@@ -145,8 +165,7 @@
           <EntitySet Name="station" EntityType="Self.station" Schema="tacosuccessv2" store:Type="Tables" />
           <EntitySet Name="vendor" EntityType="Self.vendor" Schema="tacosuccessv2" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="tacosuccessv2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -213,6 +232,7 @@
           <Property Name="entreeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="entreePrice" Type="Decimal" Nullable="false" />
+          <Property Name="imagePath" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ingredient">
           <Key>
@@ -289,7 +309,26 @@
           <EntitySet Name="recipes" EntityType="Self.recipe" />
           <EntitySet Name="stations" EntityType="Self.station" />
           <EntitySet Name="vendors" EntityType="Self.vendor" />
+          <FunctionImport Name="GetCategory" ReturnType="Collection(tacosuccessv2Model.GetCategory_Result)">
+          <Parameter Name="catNum" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetChosenOrderDetails">
+            <Parameter Name="CusID" Mode="In" Type="Int32" />
+            <Parameter Name="OrdID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetDetailsForCustomer" ReturnType="Collection(tacosuccessv2Model.GetDetailsForCustomer_Result)">
+          <Parameter Name="custID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getEntreeByCat" ReturnType="Collection(tacosuccessv2Model.getEntreeByCat_Result)">
+          <Parameter Name="cat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetIngredients">
+          <Parameter Name="ingID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetCategory_Result" />
+        <ComplexType Name="GetDetailsForCustomer_Result" />
+        <ComplexType Name="getEntreeByCat_Result" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -356,6 +395,7 @@
           <EntitySetMapping Name="entrees">
             <EntityTypeMapping TypeName="tacosuccessv2Model.entree">
               <MappingFragment StoreEntitySet="entree">
+                <ScalarProperty Name="imagePath" ColumnName="imagePath" />
                 <ScalarProperty Name="entreeID" ColumnName="entreeID" />
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="entreeName" ColumnName="entreeName" />
@@ -431,6 +471,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCategory" FunctionName="tacosuccessv2Model.Store.GetCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="tacosuccessv2Model.GetCategory_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetChosenOrderDetails" FunctionName="tacosuccessv2Model.Store.GetChosenOrderDetails" />
+          <FunctionImportMapping FunctionImportName="GetDetailsForCustomer" FunctionName="tacosuccessv2Model.Store.GetDetailsForCustomer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="tacosuccessv2Model.GetDetailsForCustomer_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getEntreeByCat" FunctionName="tacosuccessv2Model.Store.getEntreeByCat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="tacosuccessv2Model.getEntreeByCat_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetIngredients" FunctionName="tacosuccessv2Model.Store.GetIngredients" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
