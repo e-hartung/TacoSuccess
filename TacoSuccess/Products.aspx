@@ -15,8 +15,10 @@
     <div>
         <asp:DataList ID="dtlProducts" runat="server">
             <ItemTemplate>
-                <asp:ImageButton ID="ibtnProduct" runat="server" ImageUrl='<%# Eval("imagePath","~/Images/{0}") %>' PostBackUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>' Width="200px" />
-                <asp:HyperLink ID="lnkProduct" runat="server" NavigateUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>'><%# Eval("entreeName") %></asp:HyperLink>
+                <div class="menu-product">
+                    <asp:ImageButton ID="ibtnProduct" runat="server" ImageUrl='<%# Eval("imagePath","~/Images/{0}") %>' PostBackUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>' Width="200px" /><br />
+                    <asp:HyperLink ID="lnkProduct" runat="server" NavigateUrl='<%# Eval("entreeID","~/Ingredients.aspx?entree={0}") %>'><%# Eval("entreeName") %></asp:HyperLink>
+                </div>
             </ItemTemplate>
         </asp:DataList>  
         <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TacoSuccessDb %>" ProviderName="<%$ ConnectionStrings:TacoSuccessDb.ProviderName %>" SelectCommand="SELECT entreeName FROM entree WHERE categoryID = ?">
