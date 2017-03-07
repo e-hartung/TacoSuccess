@@ -18,8 +18,11 @@
             <ItemTemplate>
                 <asp:Image ID="imgProduct" runat="server" />
                 <asp:Label ID="lblProduct" runat="server" Text='<%# Eval("entree.entreeName") %>'></asp:Label>
-                <asp:BulletedList ID="bltLstExtras" runat="server" DataSource='<%# Eval("selectedIngredients") %>'></asp:BulletedList>
-                
+                <asp:DataList ID="dlIngredients" runat="server" DataSource='<%# Eval("selectedIngredients") %>'>
+                    <ItemTemplate>
+                        <asp:Label ID="lblIngredient" runat="server" Text='<%# Eval("ingredient.ingredientsName") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:DataList>
 
             </ItemTemplate>
         </asp:DataList>
